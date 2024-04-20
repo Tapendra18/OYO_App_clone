@@ -3,6 +3,7 @@ import Header1 from "../components/Header1";
 import Header3 from "@/components/Header3";
 import Image from "next/image";
 import Head from "next/head";
+import Header4 from "@/components/Header4";
 
 
 
@@ -23,6 +24,7 @@ const Home = () => {
         <div className="mb-14">
           <Image src={'/banner2.avif'} alt="banner1" width={200} height={200} className="h-40 w-full" />
         </div>
+        <Header4 />
       </div>
     </div>
   )
