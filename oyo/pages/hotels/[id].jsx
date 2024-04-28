@@ -42,7 +42,7 @@ const SingleHotel = () => {
         </ul>
         <button className="w-60 h-14 rounded-lg bg-red-400 text-lg">
           {" "}
-          Book Now
+          Book Now hotel
         </button>
       </div>
     </div>
