@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Header3 = () => {
   return (
     <div className="bg-gradient-to-r from-red-600 to-red-400 h-60">
@@ -21,12 +23,14 @@ const Header3 = () => {
             placeholder="Search..."
             className="h-14 outline-none px-3 text-lg col-span-1"
           />
-          <button
-            type="submit"
-            className="h-14 px-3 py-2 col-span-1 bg-green-400 hover:cursor-pointer hover:bg-green-600 text-white"
-          >
-            Search
-          </button>
+          <Link href={"/hotels"}>
+            <button
+              type="submit"
+              className="h-14 w-full px-3 py-2 col-span-1 bg-green-400 hover:cursor-pointer hover:bg-green-600 text-white"
+            >
+              Search
+            </button>
+          </Link>
         </div>
         <div className="flex mx-20 my-5 font-bold">
           <button
