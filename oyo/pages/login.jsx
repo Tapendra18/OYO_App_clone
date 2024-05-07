@@ -1,6 +1,21 @@
+"use client";
 import Head from "next/head";
+import { useState } from "react";
 
 const Login = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [login, setLogin] = useState(false);
+
+  const handleSignUp = () => {
+    console.log(name, email, password, "Sign Up");
+  };
+
+  const handleLogin = () => {
+    setLogin(true);
+  };
+
   return (
     <div>
       <Head>
@@ -32,30 +47,41 @@ const Login = () => {
               <p className="font-bold text-lg mb-1">
                 Please enter your Email to continue
               </p>
-              <input
-                className="outline-none border border-black my-3 px-3 py-1 w-96 h-10"
-                type="text"
-                placeholder="Enter your name..."
-              />
+              {login ? (
+                ""
+              ) : (
+                <input
+                  className="outline-none border border-black my-3 px-3 py-1 w-96 h-10"
+                  type="text"
+                  placeholder="Enter your name..."
+                  onChange={(e) => setName(e.target.value)}
+                />
+              )}
               <input
                 className="outline-none border border-black my-3 px-3 py-1 w-96 h-10"
                 type="email"
                 placeholder="Enter your email..."
+                onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 className="outline-none border border-black my-3 px-3 py-1 w-96 h-10"
                 type="password"
                 placeholder="Enter your password..."
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button
                 className="w-96 h-14 text-lg font-bold bg-red-400 hover:cursor-pointer hover:bg-red-600 text-white my-5 rounded-lg"
                 type="submit"
+                onClick={handleSignUp}
               >
                 Sign Up
               </button>
               <p className="my-3 text-lg ">
                 <span>Already have a account ?</span>
-                <span className="ml-1 border-b-2 border-red-500 text-red-600 pb-1 hover:cursor-pointer">
+                <span
+                  className="ml-1 border-b-2 border-red-500 text-red-600 pb-1 hover:cursor-pointer"
+                  onClick={handleLogin}
+                >
                   login
                 </span>
               </p>
