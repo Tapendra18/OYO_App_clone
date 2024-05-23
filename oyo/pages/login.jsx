@@ -1,6 +1,7 @@
 "use client";
 import Head from "next/head";
 import { useState } from "react";
+import axios from "axios";
 
 const Login = () => {
   const [name, setName] = useState("");
@@ -12,8 +13,19 @@ const Login = () => {
     console.log(name, email, password, "Sign Up");
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     setLogin(true);
+    const res = axios.post("/api/user/login", {
+      email,
+      password,
+    });
+    if (res) {
+      console.log("res", res);
+    }
+  };
+
+  const handleToggle = () => {
+    setLogin(!login);
   };
 
   return (
@@ -23,7 +35,7 @@ const Login = () => {
       </Head>
       <div className="flex h-screen justify-center items-center relative bg-login-background bg-no-repeat bg-cover">
         <div className="w-full absolute top-10 px-20 flex items-center ">
-          <h2 className="text-5xl font-bold mr-5">OYO</h2>
+          <h2 className="text-5xl font-bold mr-5 text-white">OYO</h2>
           <p className="text-white">
             Hotels and homes across 800 cites , 24+ countries
           </p>
@@ -72,17 +84,19 @@ const Login = () => {
               <button
                 className="w-96 h-14 text-lg font-bold bg-red-400 hover:cursor-pointer hover:bg-red-600 text-white my-5 rounded-lg"
                 type="submit"
-                onClick={handleSignUp}
+                onClick={login ? handleLogin : handleSignUp}
               >
-                Sign Up
+                {login ? "Login" : "Sign Up"}
               </button>
               <p className="my-3 text-lg ">
-                <span>Already have a account ?</span>
+                <span>
+                  {login ? "Don't have an account" : "Already have a account ?"}
+                </span>
                 <span
                   className="ml-1 border-b-2 border-red-500 text-red-600 pb-1 hover:cursor-pointer"
-                  onClick={handleLogin}
+                  onClick={handleToggle}
                 >
-                  login
+                  {login ? "Sign Up" : "Login"}
                 </span>
               </p>
             </div>
